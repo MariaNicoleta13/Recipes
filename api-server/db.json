@@ -1,0 +1,69 @@
+{
+  "recipes": [
+    {
+      "season": "spring",
+      "title": "Supa crema de ciuperci",
+      "steps": "Place the oil and butter in a pot and cook the onion. Add the chopped mushroom and garlic. Add condiments. Wait for the mushrooms to be properly cooked, add the chopped potato and some fresh water. Let it boil for about 20 minutes or until the potato is properly cooked.  Add some salt, milk and the sour cream. Mix the ingredients using a blender.",
+      "duration": "2",
+      "ingredients": [
+        {
+          "name": "champignon mushrooms",
+          "value": "700",
+          "unit": "g"
+        },
+        {
+          "name": "pleurotus mushrooms",
+          "value": "300",
+          "unit": "g"
+        },
+        {
+          "name": "milk",
+          "value": "300",
+          "unit": "ml"
+        },
+        {
+          "name": "sour cream",
+          "value": "200",
+          "unit": "g"
+        },
+        {
+          "name": "chopped garlic cloves",
+          "value": "4",
+          "unit": "pieces"
+        },
+        {
+          "name": " chopped onions",
+          "value": "3",
+          "unit": "pieces"
+        },
+        {
+          "name": "oil",
+          "value": "3",
+          "unit": "spoons"
+        },
+        {
+          "name": " butter",
+          "value": "3",
+          "unit": "spoons"
+        },
+        {
+          "name": "water",
+          "value": "1",
+          "unit": "l"
+        },
+        {
+          "name": " potato cut into pieces",
+          "value": "1",
+          "unit": "pieces"
+        },
+        {
+          "name": "condiments",
+          "value": "1",
+          "unit": "pieces"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 1
+    }
+  ]
+}
