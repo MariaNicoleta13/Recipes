@@ -6,7 +6,7 @@ import "firebase/firestore";
 import { signIn, signOut } from "../actions";
 import { Transition } from "semantic-ui-react";
 class GoogleAuth extends React.Component {
-  state = { visible: true, successfullyLoged: true };
+  state = { recentlyLoggedIn: false };
   componentDidMount() {
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -45,8 +45,7 @@ class GoogleAuth extends React.Component {
       .then(() => {
         console.log("user signed out");
         this.props.signOut();
-        this.setState({ visible: true });
-        this.setState({ successfullyLoged: true });
+        this.setState({ recentlyLoggedIn: false });
       })
       .catch(function (error) {
         console.error("error at logout: " + error);
@@ -56,26 +55,25 @@ class GoogleAuth extends React.Component {
     if (user) {
       console.log(user);
       this.props.signIn(user);
-      this.setState({ successfullyLoged: false });
+      this.setState({ recentlyLoggedIn: true });
+      setTimeout(() => {
+        this.setState({ recentlyLoggedIn: false });
+      }, 3000);
     } else {
       this.props.signOut();
-      this.setState({ visible: true });
-      this.setState({ successfullyLoged: true });
+      this.setState({ recentlyLoggedIn: false });
     }
   };
   render() {
-    const { visible } = this.state;
-    const { successfullyLoged } = this.state;
+    const { recentlyLoggedIn } = this.state;
     //   console.log(this.props);
     if (!this.props.isSIgnedIn) {
       //  if (visible) setTimeout(() => this.setState({ visible: false }), 0);
       return (
         <div>
-          <Transition visible={visible} animation="scale" duration={5000}>
-            <div className="ui red  right pointing   label ">
-              Please Sign in
-            </div>
-          </Transition>
+          {/* <Transition visible={visible} animation="scale" duration={5000}> */}
+          <div className="ui red  right pointing   label ">Please Sign in</div>
+          {/* </Transition> */}
 
           <button onClick={this.onLogIn} className="ui red basic button">
             Sign in
@@ -86,7 +84,7 @@ class GoogleAuth extends React.Component {
       return (
         <div>
           <Transition
-            visible={successfullyLoged}
+            visible={recentlyLoggedIn}
             animation="scale"
             duration={5000}
           >
@@ -104,8 +102,9 @@ class GoogleAuth extends React.Component {
 
 const mapToStateProps = (state) => {
   return {
-    user: state.authenticatication.user,
-    isSIgnedIn: state.authenticatication.isSignedIn,
+    user: state.authentication.user,
+    isSIgnedIn: state.authentication.isSignedIn,
+    userDB: state.user,
   };
 };
 export default connect(mapToStateProps, { signIn, signOut })(GoogleAuth);

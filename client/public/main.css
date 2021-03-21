@@ -1,0 +1,161 @@
+.container,
+#root,
+.myMainContainer {
+  height: 100%;
+}
+.myMainContainerRecipeList {
+  height: 95%;
+}
+.headerContainer {
+  margin: 0 !important;
+  height: 5%;
+  min-height: 30px;
+  background-color: #e7e7e7 !important;
+}
+.formContainer,
+.myMainContainerRecipeList {
+  background-color: #8c73a7;
+  height: 95%;
+  overflow-y: auto;
+}
+
+.field label {
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5em !important;
+}
+
+.recipeCreateForm {
+  /* background-color: teal; */
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 2em;
+}
+.formPageTitle {
+  text-align: center;
+  font-family: "Satisfy", cursive;
+  font-size: 3.5em;
+}
+#formTitle {
+  width: 40%;
+}
+.ingredientQuantity,
+.ingredientUnit {
+  width: 15% !important;
+  min-width: 80px;
+}
+.ingredientName {
+  width: 25% !important;
+}
+.ingredientName,
+.ingredientQuantity {
+  margin-right: 1.5em !important;
+}
+.ingredientsInputs {
+  margin: 1em 0;
+  width: 100% !important;
+}
+.myRemoveButton {
+  margin-left: 1em !important;
+}
+.field4 {
+  width: 40%;
+  /* display: flex;
+  justify-content: space-between; */
+}
+.field4 #field4inputs {
+  color: #6b4c8f;
+  margin-top: 0.5em;
+}
+#season,
+#duration {
+  width: 40%;
+  /* display: flex;
+  align-items: center; */
+  margin-bottom: 1em;
+}
+#stepsToFollow {
+  height: 10em;
+  position: relative;
+}
+.ingredientRemove {
+  display: none;
+}
+.submitButtonWrapper {
+  text-align: center;
+}
+.submitButtonWrapper button {
+  width: 10em;
+}
+::placeholder {
+  color: #8c73a7 !important;
+}
+.brandContainer {
+  display: flex;
+  margin: 0.5em 0 !important;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+.ingredientsList {
+  display: grid;
+  grid-template-columns: repeat(1, 100px);
+  grid-template-areas: "a b";
+  grid-template-rows: auto;
+}
+.ingredientsListName {
+  grid-area: a;
+}
+
+.ingredientsListQuantity {
+  grid-area: b;
+  margin: 0 !important;
+}
+/* .ingredientsList .ingredientsListQuantity .listitem {
+  margin-bottom: 1em !important;
+} */
+.upperPage {
+  margin-top: 0.5em;
+}
+/* .customCard {
+  clip-path: polygon(88% 0, 100% 15%, 100% 100%, 0 100%, 0 0);
+  border: 1px solid black !important;
+} */
+
+.customCard .header {
+  font-size: 3.5em;
+}
+.disabledEditButton {
+  opacity: 0.4 !important;
+}
+.disabledEditButton:hover {
+  cursor: help !important;
+}
+.renderedList {
+  margin: 0 !important;
+}
+.customCard {
+  min-width: 350px;
+  /* text-align: center; */
+  background-color: #e7e7e7 !important;
+}
+.recipeSteps {
+  width: 100%;
+}
+.plainText {
+  width: 100%;
+}
+.hiddenMyPainText {
+  display: none;
+}
+.modeDetailsButtonContainer {
+  width: 100%;
+  justify-content: flex-end;
+  display: flex;
+}
+.moreInfoButton i {
+  margin-left: 5px !important;
+}

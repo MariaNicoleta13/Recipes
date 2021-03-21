@@ -2,12 +2,36 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 
 class RecipeForm extends React.Component {
-  state = { numberOfIngredients: 1 };
+  state = { numberOfIngredients: 1, removedFields: [] };
 
   addMoreIngredients = () => {
     this.setState({
       numberOfIngredients: this.state.numberOfIngredients + 1,
     });
+  };
+  removeMoreIngredients = (index) => {
+    if (this.state.removedFields.indexOf(index) == -1)
+      this.setState(
+        {
+          removedFields: this.state.removedFields.concat(index),
+        },
+        () => {
+          console.log(this.state.removedFields);
+        }
+      );
+    //console.log(index);
+    //  console.log(this.state.removedFields);
+  };
+  renderRemoveField = (removeField, i) => {
+    if (this.state.removedFields.indexOf(i) != -1)
+      return (
+        <Field
+          name={removeField}
+          component="input"
+          className="ingredientRemove"
+          defaultValue="yes"
+        />
+      );
   };
   renderIngredients = () => {
     const allTheIngredients = [];
@@ -16,8 +40,14 @@ class RecipeForm extends React.Component {
       const nameField = "ingredientsName" + i;
       const quantityField = "ingredientsQuantity" + i;
       const unitField = "ingredientsUnit" + i;
+      const removeField = "ingredientsRemove" + i;
       allTheIngredients.push(
-        <div className="ingredientsInputs" key={i}>
+        <div
+          className={`ingredientsInputs ${
+            this.state.removedFields.indexOf(i) != -1 ? "ingredientRemove" : ""
+          }`}
+          key={i}
+        >
           <Field
             name={nameField}
             component="input"
@@ -37,6 +67,17 @@ class RecipeForm extends React.Component {
             placeholder="unit"
             className="ingredientUnit"
           />
+          {this.renderRemoveField(removeField, i)}
+
+          <button
+            type="button"
+            className="ui button violet myRemoveButton icon"
+            onClick={() => {
+              this.removeMoreIngredients(i);
+            }}
+          >
+            <i aria-hidden="true" className="remove icon"></i>
+          </button>
         </div>
       );
     }
@@ -51,7 +92,7 @@ class RecipeForm extends React.Component {
         // onSubmit={this.onSubmit}
         onSubmit={this.props.onSubmit}
         render={({ handleSubmit }) => (
-          <form className="ui form" onSubmit={handleSubmit}>
+          <form className="ui form formBody" onSubmit={handleSubmit}>
             <div className="field ">
               <label>Title:</label>
               <Field
@@ -67,7 +108,7 @@ class RecipeForm extends React.Component {
 
               <button
                 type="button"
-                className="ui button"
+                className="ui violet button"
                 onClick={this.addMoreIngredients}
               >
                 <i aria-hidden="true" className="add icon"></i>Add more
@@ -109,7 +150,7 @@ class RecipeForm extends React.Component {
               </section>
             </div>
             <div className="field submitButtonWrapper">
-              <button type="submit" className="ui red basic button ">
+              <button type="submit" className="ui violet  button ">
                 Submit
               </button>
             </div>

@@ -9,12 +9,17 @@ class RecipeCreate extends React.Component {
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {
-        let index = Number(key.split("ingredientsName")[1]);
-        let objToInsert = {};
-        objToInsert.name = formValues[key]; //e
-        objToInsert.value = formValues["ingredientsQuantity" + index];
-        objToInsert.unit = formValues["ingredientsUnit" + index];
-        ingredients[index] = objToInsert;
+        let index = Number(key.split("ingredientsName")[1]); //0
+        if (!formValues["ingredientsRemove" + index]) {
+          let objToInsert = {};
+          objToInsert.name = formValues[key]; //e
+          objToInsert.value = formValues["ingredientsQuantity" + index];
+          objToInsert.unit = formValues["ingredientsUnit" + index];
+          ingredients.push(objToInsert);
+        } else {
+          delete formValues["ingredientsRemove" + index];
+        }
+
         delete formValues["ingredientsName" + index];
         delete formValues["ingredientsQuantity" + index];
         delete formValues["ingredientsUnit" + index];
@@ -26,13 +31,15 @@ class RecipeCreate extends React.Component {
   };
   render() {
     return (
-      <div className="recipeCreateForm">
-        <h3 className="formPageTitle">Submit your recipe here</h3>
-        <RecipeForm
-          onSubmit={this.onSubmitForm}
-          // onSubmit2={this.onSubmitForm}
-          //  handleSubmit={this.onSubmitForm}
-        ></RecipeForm>
+      <div className="formContainer">
+        <div className="recipeCreateForm">
+          <h3 className="formPageTitle">Submit your recipe here !</h3>
+          <RecipeForm
+            onSubmit={this.onSubmitForm}
+            // onSubmit2={this.onSubmitForm}
+            //  handleSubmit={this.onSubmitForm}
+          ></RecipeForm>
+        </div>
       </div>
     );
   }
