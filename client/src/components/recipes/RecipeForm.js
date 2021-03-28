@@ -10,7 +10,7 @@ class RecipeForm extends React.Component {
     });
   };
   removeMoreIngredients = (index) => {
-    if (this.state.removedFields.indexOf(index) == -1)
+    if (this.state.removedFields.indexOf(index) === -1)
       this.setState(
         {
           removedFields: this.state.removedFields.concat(index),
@@ -23,7 +23,7 @@ class RecipeForm extends React.Component {
     //  console.log(this.state.removedFields);
   };
   renderRemoveField = (removeField, i) => {
-    if (this.state.removedFields.indexOf(i) != -1)
+    if (this.state.removedFields.indexOf(i) !== -1)
       return (
         <Field
           name={removeField}
@@ -44,7 +44,7 @@ class RecipeForm extends React.Component {
       allTheIngredients.push(
         <div
           className={`ingredientsInputs ${
-            this.state.removedFields.indexOf(i) != -1 ? "ingredientRemove" : ""
+            this.state.removedFields.indexOf(i) !== -1 ? "ingredientRemove" : ""
           }`}
           key={i}
         >

@@ -2,20 +2,22 @@
 #root,
 .myMainContainer {
   height: 100%;
+  width: 100%;
 }
 .myMainContainerRecipeList {
   height: 95%;
+  width: 100%;
 }
 .headerContainer {
   margin: 0 !important;
   height: 5%;
   min-height: 30px;
   background-color: #e7e7e7 !important;
+  width: 100%;
 }
 .formContainer,
 .myMainContainerRecipeList {
   background-color: #8c73a7;
-  height: 95%;
   overflow-y: auto;
 }
 
@@ -102,31 +104,37 @@ a:active {
 }
 .ingredientsList {
   display: grid;
-  grid-template-columns: repeat(1, 100px);
+  width: 100%;
+  grid-template-columns: 60% 35%;
+  grid-gap: 5%;
   grid-template-areas: "a b";
   grid-template-rows: auto;
 }
 .ingredientsListName {
   grid-area: a;
+  width: 100%;
 }
 
 .ingredientsListQuantity {
   grid-area: b;
   margin: 0 !important;
 }
-/* .ingredientsList .ingredientsListQuantity .listitem {
-  margin-bottom: 1em !important;
-} */
+
 .upperPage {
   margin-top: 0.5em;
+  height: 8%;
+  width: 100%;
 }
-/* .customCard {
-  clip-path: polygon(88% 0, 100% 15%, 100% 100%, 0 100%, 0 0);
-  border: 1px solid black !important;
-} */
+.customCard {
+  justify-self: center;
+}
 
 .customCard .header {
   font-size: 3.5em;
+}
+
+.customCard content {
+  width: 100%;
 }
 .disabledEditButton {
   opacity: 0.4 !important;
@@ -136,11 +144,20 @@ a:active {
 }
 .renderedList {
   margin: 0 !important;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(4, 1fr);
+  /* box-sizing: border-box; */
+  align-items: baseline;
+  width: 100%;
+  height: 92%;
 }
 .customCard {
   min-width: 350px;
   /* text-align: center; */
   background-color: #e7e7e7 !important;
+  height: 450px;
+  max-height: 100em;
 }
 .recipeSteps {
   width: 100%;
@@ -158,4 +175,46 @@ a:active {
 }
 .moreInfoButton i {
   margin-left: 5px !important;
+}
+/* ---------------modal */
+.modal {
+  text-align: center !important;
+}
+
+.modal .header,
+.modal .actions {
+  font-size: 1.5em !important;
+  background-color: #9588a3 !important;
+  color: #e7e7e7 !important;
+}
+.modal .content {
+  font-size: 1.25em !important;
+}
+.titleRecipeDelete {
+  font-weight: bolder;
+  color: #6b4c8f;
+  font-family: "Satisfy", cursive !important;
+  font-size: 1.5em !important;
+  margin: 0 5px;
+}
+
+/* modal--------------- */
+@media only screen and (max-width: 1450px) {
+  .renderedList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .renderedList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 780px) {
+  .ui.container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .renderedList {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
