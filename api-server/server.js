@@ -11,10 +11,13 @@ server.patch("/favoriteIds/:id", (req, res) => {
   const { id: userId } = req.params;
 
   const userRecord = router.db.get("users").find({ id: userId });
-  const { favoriteIds } = userRecord.value();
+  const userRecordValue = userRecord.value();
+ // console.log(userRecordValue);
+  const { favoriteIds } = userRecordValue;
   favoriteIds.push(recipeId);
+ // console.log(favoriteIds);
   const uniqueRecipeIds = [...new Set(favoriteIds)];
-
+  // console.log(uniqueRecipeIds);
   userRecord.assign({ favoriteIds: uniqueRecipeIds }).write();
 
   res.jsonp(req.query);

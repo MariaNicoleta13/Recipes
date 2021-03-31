@@ -3,6 +3,7 @@ import {
   FETCH_RECIPES,
   FETCH_RECIPE,
   DELETE_RECIPE,
+  EDIT_RECIPE,
 } from "../actions/types";
 import _ from "lodash";
 
@@ -10,6 +11,7 @@ const recipeReducer = (state = {}, action) => {
   // console.log("reducer recipe");
   // console.log(action.payload);
   switch (action.type) {
+    case EDIT_RECIPE:
     case FETCH_RECIPE:
     case CREATE_RECIPE:
       return { ...state, [action.payload.id]: action.payload };

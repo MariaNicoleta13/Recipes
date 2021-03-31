@@ -4,7 +4,7 @@
   "description": "json server to keep data",
   "main": "index.js",
   "scripts": {
-    "start": "json-server -p 3001 -w db.json"
+    "start": "node server.js"
   },
   "author": "Mary",
   "license": "ISC",

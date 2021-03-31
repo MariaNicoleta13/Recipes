@@ -3,6 +3,13 @@ import { Form, Field } from "react-final-form";
 
 class RecipeForm extends React.Component {
   state = { numberOfIngredients: 1, removedFields: [] };
+  componentDidMount() {
+    if (this.props.numberOfIngredientsToRender) {
+      this.setState({
+        numberOfIngredients: this.props.numberOfIngredientsToRender,
+      });
+    }
+  }
 
   addMoreIngredients = () => {
     this.setState({
@@ -91,6 +98,7 @@ class RecipeForm extends React.Component {
       <Form
         // onSubmit={this.onSubmit}
         onSubmit={this.props.onSubmit}
+        initialValues={this.props.formValuesToRender}
         render={({ handleSubmit }) => (
           <form className="ui form formBody" onSubmit={handleSubmit}>
             <div className="field ">

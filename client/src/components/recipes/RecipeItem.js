@@ -62,9 +62,12 @@ class RecipeItem extends React.Component {
         />
       );
   };
-  addToFavorite(index) {
+  addToFavorite(recipeId) {
     //</button> this.props.addFavToUser(this.props.currentUid, index);
     // return console.log(this.props.currentUid);
+    console.log(this.props.currentUid);
+    console.log(recipeId);
+    this.props.addFavToUser(this.props.currentUid, recipeId);
   }
   toggleTextArea = () => {
     this.setState({ isHidden: !this.state.isHidden });
@@ -129,13 +132,18 @@ class RecipeItem extends React.Component {
   renderFavoriteButton(favoriteIds, recipeId) {
     //  console.log(favoriteIds.indexOf(recipeId));
     if (favoriteIds && favoriteIds.indexOf(recipeId) !== -1)
+      return <button className="ui gray basic button">UnFavore</button>;
+    else {
       return (
-        <button className="ui gray basic button" onClick={this.addToFavorite()}>
+        <button
+          className="ui  purple basic button"
+          onClick={() => {
+            this.addToFavorite(recipeId);
+          }}
+        >
           Favorite
         </button>
       );
-    else {
-      return <button className="ui  purple basic button">Favorite</button>;
     }
   }
   modeDetailsButton() {

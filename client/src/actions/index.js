@@ -8,6 +8,7 @@ import {
   FETCH_USER,
   EDIT_USER,
   DELETE_RECIPE,
+  EDIT_RECIPE,
 } from "./types";
 import recipes from "../apis/recipes";
 import history from "../history";
@@ -29,7 +30,7 @@ export const createRecipe = (formValues) => {
     if (isSignedIn) {
       const { uid } = getState().authentication.user;
       //  console.log(uid);
-     // console.log(formValues);
+      // console.log(formValues);
       const response = await recipes.post("/recipes", { ...formValues, uid });
       dispatch({ type: CREATE_RECIPE, payload: response.data });
       //programatic navigation:
@@ -71,6 +72,9 @@ export const fetchUser = (id) => {
 };
 export const addFavToUser = (uid, recipeId) => {
   return async (dispatch) => {
+    console.log("din actions");
+    console.log("uid: " + uid);
+    console.log("recipeId: " + recipeId);
     const response = await recipes.patch(`/favoriteIds/${uid}`, { recipeId });
     dispatch({ type: EDIT_USER, payload: response.data });
     history.push("/");
@@ -79,8 +83,15 @@ export const addFavToUser = (uid, recipeId) => {
 
 export const deleteRecipe = (recipeId) => {
   return async (dispatch) => {
-   await recipes.delete(`/recipes/${recipeId}`);
+    await recipes.delete(`/recipes/${recipeId}`);
     dispatch({ type: DELETE_RECIPE, payload: recipeId });
+    history.push("/");
+  };
+};
+export const editRecipe = (id, formValues) => {
+  return async (dispatch) => {
+    const response = await recipes.patch(`/recipes/${id}`, formValues);
+    dispatch({ type: EDIT_RECIPE, payload: response.data });
     history.push("/");
   };
 };

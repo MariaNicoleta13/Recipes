@@ -15,6 +15,9 @@
   background-color: #e7e7e7 !important;
   width: 100%;
 }
+.formContainer {
+  height: 95%;
+}
 .formContainer,
 .myMainContainerRecipeList {
   background-color: #8c73a7;
@@ -150,13 +153,15 @@ a:active {
   /* box-sizing: border-box; */
   align-items: baseline;
   width: 100%;
-  height: 92%;
+  /* height: 92%; */
+  /* height: clamp(30em, 28em, 50em); */
+  max-height: 50em;
 }
 .customCard {
   min-width: 350px;
   /* text-align: center; */
   background-color: #e7e7e7 !important;
-  height: 450px;
+  /* height: 450px; */
   max-height: 100em;
 }
 .recipeSteps {
