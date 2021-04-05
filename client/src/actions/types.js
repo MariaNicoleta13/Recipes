@@ -8,3 +8,4 @@ export const EDIT_USER = "EDIT_USER";
 export const FETCH_RECIPE = "FETCH_RECIPE";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 export const EDIT_RECIPE = "EDIT_RECIPE";
+export const DELETE_FAV_USER = "DELETE_FAV_USER";

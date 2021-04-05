@@ -9,6 +9,7 @@ import {
   EDIT_USER,
   DELETE_RECIPE,
   EDIT_RECIPE,
+  DELETE_FAV_USER,
 } from "./types";
 import recipes from "../apis/recipes";
 import history from "../history";
@@ -72,11 +73,19 @@ export const fetchUser = (id) => {
 };
 export const addFavToUser = (uid, recipeId) => {
   return async (dispatch) => {
-    console.log("din actions");
-    console.log("uid: " + uid);
-    console.log("recipeId: " + recipeId);
+    // console.log("din actions");
+    // console.log("uid: " + uid);
+    // console.log("recipeId: " + recipeId);
     const response = await recipes.patch(`/favoriteIds/${uid}`, { recipeId });
-    dispatch({ type: EDIT_USER, payload: response.data });
+    dispatch({ type: EDIT_USER, payload: recipeId });
+    history.push("/");
+  };
+};
+
+export const removeFavFromUser = (uid, recipeId) => {
+  return async (dispatch) => {
+    const response = await recipes.delete(`/favoriteIds/${uid}`, { recipeId });
+    dispatch({ type: DELETE_FAV_USER, payload: recipeId });
     history.push("/");
   };
 };

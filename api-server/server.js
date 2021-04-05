@@ -12,12 +12,32 @@ server.patch("/favoriteIds/:id", (req, res) => {
 
   const userRecord = router.db.get("users").find({ id: userId });
   const userRecordValue = userRecord.value();
- // console.log(userRecordValue);
+  // console.log(userRecordValue);
   const { favoriteIds } = userRecordValue;
   favoriteIds.push(recipeId);
- // console.log(favoriteIds);
+  // console.log(favoriteIds);
   const uniqueRecipeIds = [...new Set(favoriteIds)];
   // console.log(uniqueRecipeIds);
+  userRecord.assign({ favoriteIds: uniqueRecipeIds }).write();
+
+  res.jsonp(req.query);
+});
+//try
+
+server.delete("/favoriteIds/:id", (req, res) => {
+  const users = router.db.get("users");
+  const { recipeId } = req.body;
+  const { id: userId } = req.params;
+
+  const userRecord = router.db.get("users").find({ id: userId });
+  const userRecordValue = userRecord.value();
+  // console.log(userRecordValue);
+  const { favoriteIds } = userRecordValue;
+  // favoriteIds.pop(recipeId);
+  favoriteIds.splice(favoriteIds.indexOf(recipeId), 1);
+  // console.log(favoriteIds);
+  const uniqueRecipeIds = [...new Set(favoriteIds)];
+  //  console.log(uniqueRecipeIds);
   userRecord.assign({ favoriteIds: uniqueRecipeIds }).write();
 
   res.jsonp(req.query);

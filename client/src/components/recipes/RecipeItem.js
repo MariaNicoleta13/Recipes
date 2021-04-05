@@ -4,7 +4,7 @@ import { Popup } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import RecipeDelete from "./RecipeDelete";
 import _ from "lodash";
-import { fetchUser, addFavToUser } from "../../actions";
+import { fetchUser, addFavToUser, removeFavFromUser } from "../../actions";
 class RecipeItem extends React.Component {
   state = { isHidden: true, deleteModalMode: null };
   componentDidMount() {
@@ -65,9 +65,15 @@ class RecipeItem extends React.Component {
   addToFavorite(recipeId) {
     //</button> this.props.addFavToUser(this.props.currentUid, index);
     // return console.log(this.props.currentUid);
+    //  console.log(this.props.currentUid);
+    // console.log(recipeId);
+    this.props.addFavToUser(this.props.currentUid, recipeId);
+  }
+  removeFavFromUserCall(recipeId) {
+    console.log("from removeFavFromUserCall");
     console.log(this.props.currentUid);
     console.log(recipeId);
-    this.props.addFavToUser(this.props.currentUid, recipeId);
+    this.props.removeFavFromUser(this.props.currentUid, recipeId);
   }
   toggleTextArea = () => {
     this.setState({ isHidden: !this.state.isHidden });
@@ -132,17 +138,36 @@ class RecipeItem extends React.Component {
   renderFavoriteButton(favoriteIds, recipeId) {
     //  console.log(favoriteIds.indexOf(recipeId));
     if (favoriteIds && favoriteIds.indexOf(recipeId) !== -1)
-      return <button className="ui gray basic button">UnFavore</button>;
+      return (
+        <Popup
+          content="Unfavor your recipe"
+          trigger={
+            <button
+              className="ui gray basic button"
+              onClick={() => {
+                this.removeFavFromUserCall(recipeId);
+              }}
+            >
+              UnFavore
+            </button>
+          }
+        />
+      );
     else {
       return (
-        <button
-          className="ui  purple basic button"
-          onClick={() => {
-            this.addToFavorite(recipeId);
-          }}
-        >
-          Favorite
-        </button>
+        <Popup
+          content="Favor your recipe"
+          trigger={
+            <button
+              className="ui  purple basic button"
+              onClick={() => {
+                this.addToFavorite(recipeId);
+              }}
+            >
+              Favorite
+            </button>
+          }
+        />
       );
     }
   }
@@ -195,6 +220,8 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
-export default connect(mapStateToProps, { fetchUser, addFavToUser })(
-  RecipeItem
-);
+export default connect(mapStateToProps, {
+  fetchUser,
+  addFavToUser,
+  removeFavFromUser,
+})(RecipeItem);
