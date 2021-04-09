@@ -76,7 +76,7 @@ export const addFavToUser = (uid, recipeId) => {
     // console.log("din actions");
     // console.log("uid: " + uid);
     // console.log("recipeId: " + recipeId);
-    const response = await recipes.patch(`/favoriteIds/${uid}`, { recipeId });
+    await recipes.patch(`/favoriteIds/${uid}`, { recipeId });
     dispatch({ type: EDIT_USER, payload: recipeId });
     history.push("/");
   };
@@ -84,7 +84,7 @@ export const addFavToUser = (uid, recipeId) => {
 
 export const removeFavFromUser = (uid, recipeId) => {
   return async (dispatch) => {
-    const response = await recipes.delete(`/favoriteIds/${uid}`, { recipeId });
+    await recipes.delete(`/favoriteIds/${uid}`, { recipeId });
     dispatch({ type: DELETE_FAV_USER, payload: recipeId });
     history.push("/");
   };

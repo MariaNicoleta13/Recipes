@@ -11,6 +11,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { signIn, signOut } from "../actions";
 import { connect } from "react-redux";
+
 class App extends React.Component {
   componentDidMount() {
     this.unregisterAuthObserver = firebase
@@ -28,6 +29,7 @@ class App extends React.Component {
           this.props.signOut();
         }
       });
+
   }
 
   componentWillUnmount() {

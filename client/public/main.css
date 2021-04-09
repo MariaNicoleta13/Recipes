@@ -7,6 +7,9 @@
 .myMainContainerRecipeList {
   height: 95%;
   width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .headerContainer {
   margin: 0 !important;
@@ -125,10 +128,20 @@ a:active {
 
 .upperPage {
   padding-top: 0.5em;
-  margin-left: 3rem;
-  height: 10%;
-  min-height: 40px;
+  /* margin-left: 3rem; */
+  /* height: 10%;
+  min-height: 40px; */
+  height: max(10%, 50px);
   width: 100%;
+  display: flex;
+  position: relative;
+}
+.backgroundImg {
+  position: absolute;
+}
+.seasonButton,
+.containerCreateRecipe {
+  margin-right: 2rem !important;
 }
 .customCard {
   justify-self: center;

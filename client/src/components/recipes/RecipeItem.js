@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import RecipeDelete from "./RecipeDelete";
 import _ from "lodash";
 import { fetchUser, addFavToUser, removeFavFromUser } from "../../actions";
+
 class RecipeItem extends React.Component {
   state = { isHidden: true, deleteModalMode: null };
   componentDidMount() {
@@ -67,6 +68,9 @@ class RecipeItem extends React.Component {
     // return console.log(this.props.currentUid);
     //  console.log(this.props.currentUid);
     // console.log(recipeId);
+    // const termen = "winter";
+
+
     this.props.addFavToUser(this.props.currentUid, recipeId);
   }
   removeFavFromUserCall(recipeId) {
