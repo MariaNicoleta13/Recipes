@@ -64,6 +64,291 @@
       ],
       "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
       "id": 1
+    },
+    {
+      "season": "winter",
+      "title": "One Pot Chicken Fajita Pasta",
+      "steps": "Heat oil in a large pot over high heat\nAdd chicken and cook until no pink is visible, about 5-6 minutes, then take the chicken out.\nAdd the bell peppers and onion, cooking until the onion is translucent, about 6 minutes.\nAdd the chicken back to the pot with salt, pepper, chili powder, cumin, and garlic powder, stirring until evenly coated, about 30 seconds.\nAdd the milk and the penne, stirring constantly to prevent any pasta from sticking.\nCook for about 20 minutes until pasta is cooked and the milk has reduced to a thick sauce that coats the pasta.\nAdd the cheese and mix until melted.",
+      "duration": "1",
+      "ingredients": [
+        {
+          "name": "oil",
+          "value": "3",
+          "unit": "tablespoons "
+        },
+        {
+          "name": "chicken breasts sliced",
+          "value": "3",
+          "unit": "unit"
+        },
+        {
+          "name": "red bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "green bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "yellow bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "onion sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "salt",
+          "value": "1",
+          "unit": "teaspoon "
+        },
+        {
+          "name": "chili powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "garlic powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "milk",
+          "value": "250",
+          "unit": "ml"
+        },
+        {
+          "name": "penne pasta",
+          "value": "400",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 2
+    },
+    {
+      "season": "winter",
+      "title": "One Pot Chicken Fajita Pasta",
+      "steps": "Heat oil in a large pot over high heat\nAdd chicken and cook until no pink is visible, about 5-6 minutes, then take the chicken out.\nAdd the bell peppers and onion, cooking until the onion is translucent, about 6 minutes.\nAdd the chicken back to the pot with salt, pepper, chili powder, cumin, and garlic powder, stirring until evenly coated, about 30 seconds.\nAdd the milk and the penne, stirring constantly to prevent any pasta from sticking.\nCook for about 20 minutes until pasta is cooked and the milk has reduced to a thick sauce that coats the pasta.\nAdd the cheese and mix until melted.",
+      "duration": "1",
+      "ingredients": [
+        {
+          "name": "oil",
+          "value": "3",
+          "unit": "tablespoons "
+        },
+        {
+          "name": "chicken breasts sliced",
+          "value": "3",
+          "unit": "unit"
+        },
+        {
+          "name": "red bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "green bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "yellow bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "onion sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "salt",
+          "value": "1",
+          "unit": "teaspoon "
+        },
+        {
+          "name": "chili powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "garlic powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "milk",
+          "value": "250",
+          "unit": "ml"
+        },
+        {
+          "name": "penne pasta",
+          "value": "400",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 3
+    },
+    {
+      "season": "winter",
+      "title": "One Pot Chicken Fajita Pasta",
+      "steps": "Heat oil in a large pot over high heat\nAdd chicken and cook until no pink is visible, about 5-6 minutes, then take the chicken out.\nAdd the bell peppers and onion, cooking until the onion is translucent, about 6 minutes.\nAdd the chicken back to the pot with salt, pepper, chili powder, cumin, and garlic powder, stirring until evenly coated, about 30 seconds.\nAdd the milk and the penne, stirring constantly to prevent any pasta from sticking.\nCook for about 20 minutes until pasta is cooked and the milk has reduced to a thick sauce that coats the pasta.\nAdd the cheese and mix until melted.",
+      "duration": "1",
+      "ingredients": [
+        {
+          "name": "oil",
+          "value": "3",
+          "unit": "tablespoons "
+        },
+        {
+          "name": "chicken breasts sliced",
+          "value": "3",
+          "unit": "unit"
+        },
+        {
+          "name": "red bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "green bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "yellow bell pepper sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "onion sliced",
+          "value": "1",
+          "unit": "unit"
+        },
+        {
+          "name": "salt",
+          "value": "1",
+          "unit": "teaspoon "
+        },
+        {
+          "name": "chili powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "garlic powder",
+          "value": "1",
+          "unit": "teaspoon"
+        },
+        {
+          "name": "milk",
+          "value": "250",
+          "unit": "ml"
+        },
+        {
+          "name": "penne pasta",
+          "value": "400",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 4
+    },
+    {
+      "season": "spring",
+      "title": "dummyToDEL",
+      "steps": "dadwadadwada",
+      "duration": "22",
+      "ingredients": [
+        {
+          "name": "a",
+          "value": "1",
+          "unit": "ml"
+        },
+        {
+          "name": "b",
+          "value": "2",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 5
+    },
+    {
+      "season": "summer",
+      "title": "summerEG",
+      "steps": "dadwadadwada",
+      "duration": "22",
+      "ingredients": [
+        {
+          "name": "a",
+          "value": "1",
+          "unit": "ml"
+        },
+        {
+          "name": "b",
+          "value": "2",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 6
+    },
+    {
+      "season": "autumn",
+      "title": "autumnEG",
+      "steps": "dadwadadwada",
+      "duration": "22",
+      "ingredients": [
+        {
+          "name": "a",
+          "value": "1",
+          "unit": "ml"
+        },
+        {
+          "name": "b",
+          "value": "2",
+          "unit": "g"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 7
+    },
+    {
+      "season": "spring",
+      "title": "testCreate",
+      "ingredientsRemove2": "yes",
+      "steps": "dawdada",
+      "duration": "222",
+      "ingredients": [
+        {
+          "name": "a",
+          "value": "1",
+          "unit": "ml"
+        }
+      ],
+      "uid": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "displayName(pin)": "Mary GhostKid",
+      "uid(pin)": "JlNLjuu3yTN4U2g9ALdAP1sS5852",
+      "email(pin)": "meryaerhayhey@gmail.com",
+      "favoriteIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "id": "JlNLjuu3yTN4U2g9ALdAP1sS5852"
     }
   ]
 }
