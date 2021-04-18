@@ -2,7 +2,11 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 
 class RecipeForm extends React.Component {
-  state = { numberOfIngredients: 1, removedFields: [] };
+  state = {
+    numberOfIngredients: 1,
+    removedFields: [],
+    seasonSelected: "spring",
+  };
   componentDidMount() {
     if (this.props.numberOfIngredientsToRender) {
       this.setState({
@@ -91,7 +95,11 @@ class RecipeForm extends React.Component {
 
     return allTheIngredients;
   };
-
+  seasonChange = (e) => {
+    //console.log(e.target.value);
+    this.setState({ seasonSelected: e.target.value });
+    // this.props.changeBackground(e.target.value);
+  };
   render() {
     //  console.log(this.props);
     return (
@@ -137,13 +145,21 @@ class RecipeForm extends React.Component {
                 <Field
                   name="season"
                   id="field4inputs"
-                  component="select"
+                  // component="select"
                   initialValue="spring"
                 >
-                  <option value="spring">Spring</option>
-                  <option value="summer">Summer</option>
-                  <option value="autumn">Autumn</option>
-                  <option value="winter">Winter</option>
+                  {(props) => (
+                    <select
+                      {...props.select}
+                      onChange={this.seasonChange}
+                      value={this.state.seasonSelected}
+                    >
+                      <option value="spring">Spring</option>
+                      <option value="summer">Summer</option>
+                      <option value="autumn">Autumn</option>
+                      <option value="winter">Winter</option>
+                    </select>
+                  )}
                 </Field>
               </section>
               <section id="duration">

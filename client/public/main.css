@@ -21,6 +21,9 @@
 .formContainer {
   height: 95%;
 }
+.formContainer::before {
+  opacity: 0.5 !important;
+}
 .formContainer,
 .myMainContainerRecipeList {
   background-color: #8c73a7;
@@ -128,7 +131,7 @@ a:active {
 
 .upperPage {
   padding-top: 0.5em;
-  /* margin-left: 3rem; */
+  padding-left: 3rem;
   /* height: 10%;
   min-height: 40px; */
   height: max(10%, 50px);
@@ -218,19 +221,34 @@ a:active {
   font-size: 1.5em !important;
   margin: 0 5px;
 }
+.hamburgerWrap {
+  display: none;
+}
+.normalResButtonsWrap {
+  display: flex;
+}
 
 /* modal--------------- */
-@media only screen and (max-width: 1450px) {
+@media only screen and (max-width: 1600px) {
   .renderedList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
   .renderedList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media only screen and (max-width: 780px) {
+  .hamburgerOnLowRes {
+    display: grid !important;
+    gap: 1rem;
+  }
+  .renderedList {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    /* height: calc(100% - 45px); */
+  }
   .ui.container {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -238,4 +256,14 @@ a:active {
   .renderedList {
     grid-template-columns: repeat(1, 1fr);
   }
+  .normalResButtonsWrap {
+    display: none;
+  }
+  .hamburgerWrap {
+    display: flex;
+  }
+  .upperPage {
+    height: 45px;
+  }
 }
+/* grid */

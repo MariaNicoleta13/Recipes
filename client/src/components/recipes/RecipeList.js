@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Popup, Button } from "semantic-ui-react";
+import { Popup, Button, Menu, Dropdown } from "semantic-ui-react";
 import { fetchRecipes, fetchUser } from "../../actions";
 import _ from "lodash";
 import RecipeItem from "./RecipeItem";
@@ -23,7 +23,7 @@ class RecipeList extends React.Component {
     if (this.props.isSignedIn) {
       return (
         <div className="containerCreateRecipe">
-          <button className="ui icon violet button">
+          <button className="ui icon  button violet ">
             <Link tabIndex="0" to="recipes/new">
               {linkContent}
             </Link>
@@ -36,7 +36,7 @@ class RecipeList extends React.Component {
           <Popup
             content="You need to sign in"
             trigger={
-              <Button className="ui icon button createRecipeDisabled">
+              <Button className="ui icon button createRecipeDisabled ">
                 <Link tabIndex="0" to="">
                   {linkContent}
                 </Link>
@@ -75,7 +75,7 @@ class RecipeList extends React.Component {
         </Button>
       );
     }
-    return <div className="seasonsButtonsContainer">{button}</div>;
+    return <div className="seasonsButtonsContainer hamburgerOnLowRes">{button}</div>;
   }
   async filterRecipes(seasonName) {
     // console.log("initial" + this.state.seasonSelected);
@@ -87,9 +87,9 @@ class RecipeList extends React.Component {
       // console.log(recipe);
       if (!this.state.seasonSelected) {
         return <RecipeItem recipe={recipe} key={recipe.id} />;
-      } else if (recipe.season == this.state.seasonSelected) {
+      } else if (recipe.season === this.state.seasonSelected) {
         return <RecipeItem recipe={recipe} key={recipe.id} />;
-      }
+      } else return "";
     });
   }
 
@@ -105,10 +105,18 @@ class RecipeList extends React.Component {
           }.jpg)`,
         }}
       >
-        <section className="upperPage">
+        <Menu.Menu className="upperPage normalResButtonsWrap ">
           {this.renderCreateRecipeButton()}
           {this.renderFilterSeasons()}
-        </section>
+        </Menu.Menu>
+        <Menu.Menu className="upperPage hamburgerWrap  ">
+          <Dropdown className="button violet " item text="Options">
+            <Dropdown.Menu>
+              <Dropdown.Item> {this.renderCreateRecipeButton()}</Dropdown.Item>
+              <Dropdown.Item>{this.renderFilterSeasons()}</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
         <section className="renderedList ui ">
           {this.renderListOfRecipes()}
         </section>

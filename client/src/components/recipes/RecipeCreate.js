@@ -3,9 +3,12 @@ import RecipeForm from "./RecipeForm";
 import { createRecipe } from "../../actions";
 import { connect } from "react-redux";
 class RecipeCreate extends React.Component {
+  state = {
+    seasonSelectedParent: "spring",
+  };
   onSubmitForm = (formValues) => {
-    console.log("inafara form");
-    console.log(formValues);
+    // console.log("inafara form");
+    // console.log(formValues);
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {
@@ -28,6 +31,11 @@ class RecipeCreate extends React.Component {
     formValues["ingredients"] = ingredients;
     this.props.createRecipe(formValues);
   };
+  changeBackground = (a) => {
+    console.log("from parent" + a);
+    this.setState({ seasonSelectedParent: a });
+    console.log(this.state.seasonSelectedParent);
+  };
   render() {
     return (
       <div className="formContainer">
@@ -35,6 +43,7 @@ class RecipeCreate extends React.Component {
           <h3 className="formPageTitle">Submit your recipe here !</h3>
           <RecipeForm
             onSubmit={this.onSubmitForm}
+            // changeBackground={this.changeBackground}
             // onSubmit2={this.onSubmitForm}
             //  handleSubmit={this.onSubmitForm}
           ></RecipeForm>
