@@ -44,6 +44,6 @@ server.delete("/favoriteIds/:id", (req, res) => {
 });
 
 server.use(router);
-server.listen(3001, () => {
+server.listen(3002, () => {
   console.log("ok");
 });
