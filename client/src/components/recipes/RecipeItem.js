@@ -70,7 +70,6 @@ class RecipeItem extends React.Component {
     // console.log(recipeId);
     // const termen = "winter";
 
-
     this.props.addFavToUser(this.props.currentUid, recipeId);
   }
   removeFavFromUserCall(recipeId) {
@@ -141,7 +140,11 @@ class RecipeItem extends React.Component {
   }
   renderFavoriteButton(favoriteIds, recipeId) {
     //  console.log(favoriteIds.indexOf(recipeId));
-    if (favoriteIds && favoriteIds.indexOf(recipeId) !== -1)
+    if (
+      this.props.isSignedIn &&
+      favoriteIds &&
+      favoriteIds.indexOf(recipeId) !== -1
+    )
       return (
         <Popup
           content="Unfavor your recipe"
@@ -152,12 +155,12 @@ class RecipeItem extends React.Component {
                 this.removeFavFromUserCall(recipeId);
               }}
             >
-              UnFavore
+              Unfavor
             </button>
           }
         />
       );
-    else {
+    else if (this.props.isSignedIn) {
       return (
         <Popup
           content="Favor your recipe"
@@ -168,6 +171,17 @@ class RecipeItem extends React.Component {
                 this.addToFavorite(recipeId);
               }}
             >
+              Favorite
+            </button>
+          }
+        />
+      );
+    } else {
+      return (
+        <Popup
+          content="You need to be signed in"
+          trigger={
+            <button className="ui gray basic button   disabledEditButton">
               Favorite
             </button>
           }
