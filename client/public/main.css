@@ -17,6 +17,11 @@
   min-height: 30px;
   background-color: #e7e7e7 !important;
   width: 100%;
+  align-items: center;
+}
+.signInButton {
+  height: 100%;
+  justify-content: center;
 }
 .formContainer {
   height: 95%;
@@ -103,7 +108,7 @@
 }
 .brandContainer {
   display: flex;
-  margin: 0.5em 3rem !important;
+  margin: 0 3rem !important;
 }
 a,
 a:visited,
@@ -174,7 +179,7 @@ a:active {
   /* height: 92%; */
   /* height: clamp(30em, 28em, 50em); */
   max-height: 50em;
-  min-height: 92%;
+  min-height: 90%;
 }
 .customCard {
   min-width: 350px;

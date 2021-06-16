@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import { connect } from "react-redux";
 import "firebase/auth";
 import "firebase/firestore";
-import { signIn, signOut } from "../actions";
+import { signIn, signOut, addUser } from "../actions";
 import { Transition } from "semantic-ui-react";
 class GoogleAuth extends React.Component {
   state = { recentlyLoggedIn: false };
@@ -55,6 +55,7 @@ class GoogleAuth extends React.Component {
     if (user) {
       console.log(user);
       this.props.signIn(user);
+      this.props.addUser();
       this.setState({ recentlyLoggedIn: true });
       setTimeout(() => {
         this.setState({ recentlyLoggedIn: false });
@@ -107,4 +108,6 @@ const mapToStateProps = (state) => {
     userDB: state.user,
   };
 };
-export default connect(mapToStateProps, { signIn, signOut })(GoogleAuth);
+export default connect(mapToStateProps, { signIn, signOut, addUser })(
+  GoogleAuth
+);

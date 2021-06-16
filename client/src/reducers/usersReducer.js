@@ -3,11 +3,12 @@ import {
   USER_OUT,
   EDIT_USER,
   DELETE_FAV_USER,
+  CREATE_USER,
 } from "../actions/types";
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
-    // case CREATE_USER:
-    //   return { ...state, user: action.payload };
+    case CREATE_USER:
+      return { ...state, user: action.payload };
     case FETCH_USER:
       return { ...action.payload };
     case EDIT_USER:

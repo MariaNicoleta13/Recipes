@@ -44,10 +44,26 @@ export const addUser = () => {
     const { isSignedIn } = getState().authentication;
 
     if (isSignedIn) {
-      const { uid } = getState().authentication.user;
+      const userObj = getState().authentication.user;
+      userObj.favoriteIds = [];
+      userObj.id = userObj.uid;
 
-      const response = await recipes.post("/users", { ...uid });
-      dispatch({ type: CREATE_USER, payload: response.data });
+      // const responseExistingUsers = await recipes.get(`/users/${userObj.id}`);
+      let existsInDB = false;
+      const responseExistingUsers = await recipes.get(`/users`);
+      for (let index = 0; index < responseExistingUsers.data.length; index++) {
+        var userObjDB = responseExistingUsers.data[index];
+        if (userObjDB.id === userObj.id) {
+          existsInDB = true;
+          break;
+        }
+      }
+      if (!existsInDB) {
+        const response = await recipes.post(`/users`, userObj);
+        dispatch({ type: CREATE_USER, payload: response.data });
+        console.log("response.data create: " + response.data);
+      }
+
       //programatic navigation:
       history.push("/");
     }
