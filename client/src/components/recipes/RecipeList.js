@@ -2,16 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Popup, Button, Menu, Dropdown } from "semantic-ui-react";
-import { fetchRecipes, fetchUser } from "../../actions";
+import { fetchRecipes, fetchUser, changeSeason } from "../../actions";
 import _ from "lodash";
 import RecipeItem from "./RecipeItem";
+import { SEASON_ALL } from "../../constants/seasons";
 // import { All } from "All.jpg";
 class RecipeList extends React.Component {
-  state = { isHidden: true, seasonSelected: null };
+  state = { isHidden: true };
   componentDidMount() {
     this.props.fetchRecipes();
-    if (_.isEmpty(this.props.user)) this.props.fetchUser(this.props.currentUid);
-    //   this.props.fetchUser(0);
+    if (_.isEmpty(this.props.user)) {
+      this.props.fetchUser(this.props.currentUid);
+    }
   }
 
   renderCreateRecipeButton() {
@@ -49,12 +51,12 @@ class RecipeList extends React.Component {
   }
   renderFilterSeasons() {
     let seasonsIcons = ["snowflake", "sun", "viadeo", "pagelines", "spinner"];
-    let seasonsNames = ["winter", "summer", "autumn", "spring", "All"];
+    let seasonsNames = ["winter", "summer", "autumn", "spring", "all"];
     let colors = ["blue", "orange", "olive", "teal", "violet"];
     let button = [];
     for (let i = 0; i < seasonsIcons.length; i++) {
       let linkContent = (
-        <div>
+        <div className="seasonButtonContainer">
           <i
             aria-hidden="true"
             key={i}
@@ -75,34 +77,42 @@ class RecipeList extends React.Component {
         </Button>
       );
     }
-    return <div className="seasonsButtonsContainer hamburgerOnLowRes">{button}</div>;
+    return (
+      <div className="seasonsButtonsContainer hamburgerOnLowRes">{button}</div>
+    );
   }
   async filterRecipes(seasonName) {
-    // console.log("initial" + this.state.seasonSelected);
-    if (seasonName !== "All") this.setState({ seasonSelected: seasonName });
-    else this.setState({ seasonSelected: null });
+    this.props.changeSeason(seasonName);
   }
   renderListOfRecipes() {
-    return this.props.recipes.map((recipe) => {
-      // console.log(recipe);
-      if (!this.state.seasonSelected) {
-        return <RecipeItem recipe={recipe} key={recipe.id} />;
-      } else if (recipe.season === this.state.seasonSelected) {
-        return <RecipeItem recipe={recipe} key={recipe.id} />;
-      } else return "";
+    let recipiesToBeRendered;
+    if (this.props.season === SEASON_ALL) {
+      recipiesToBeRendered = this.props.recipes;
+    } else {
+      recipiesToBeRendered = this.props.recipes.filter((recipe) => {
+        return this.props.season === recipe.season;
+      });
+    }
+    return recipiesToBeRendered.map((recipe) => {
+      return <RecipeItem recipe={recipe} key={recipe.id} />;
     });
+    // return this.props.recipes.map((recipe) => {
+    //   if (this.props.season == "All")
+    //     return <RecipeItem recipe={recipe} key={recipe.id} />;
+    //   if (recipe.season === this.props.season) {
+    //     return <RecipeItem recipe={recipe} key={recipe.id} />;
+    //   } else return "";
+    // });
   }
 
   render() {
+    console.log(this.props.currentUid);
+    // this.props.fetchUser(this.props.currentUid);
     return (
       <div
         className="myMainContainerRecipeList"
         style={{
-          backgroundImage: `url( ${
-            this.state.seasonSelected != null
-              ? this.state.seasonSelected
-              : "All"
-          }.jpg)`,
+          backgroundImage: `url( ${this.props.season}.jpg)`,
         }}
       >
         <Menu.Menu className="upperPage normalResButtonsWrap ">
@@ -131,9 +141,11 @@ const mapStateToProps = (state) => {
     recipes: Object.values(state.recipes),
     favorites: null,
     user: state.user,
+    season: state.season,
   };
 };
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchUser,
+  changeSeason,
 })(RecipeList);

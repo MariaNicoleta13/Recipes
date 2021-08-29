@@ -8,10 +8,11 @@ import {
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case CREATE_USER:
-      return { ...state, user: action.payload };
+      return { ...action.payload };
     case FETCH_USER:
       return { ...action.payload };
     case EDIT_USER:
+      console.log(state);
       state.favoriteIds.push(action.payload);
       return { ...state };
     case DELETE_FAV_USER:

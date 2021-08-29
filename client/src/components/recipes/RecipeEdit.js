@@ -8,7 +8,7 @@ class RecipeEdit extends React.Component {
   }
   onSubmit = (formValues) => {
     console.log("inafara form");
-    // console.log(formValues);
+    console.log(formValues);
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {

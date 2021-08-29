@@ -13,6 +13,7 @@ class RecipeItem extends React.Component {
   }
   render() {
     const { recipe } = this.props;
+    // console.log(recipe.steps);
     return (
       <div className="ui card customCard" key={recipe.id}>
         <div className="content">
@@ -28,7 +29,11 @@ class RecipeItem extends React.Component {
               </div>
             </div>
             <div className="recipeSteps">
-              <div className="modeDetailsButtonContainer">
+              <div
+                className={`modeDetailsButtonContainer  ${
+                  !recipe.steps ? "hideModeDetails" : ""
+                }`}
+              >
                 {this.modeDetailsButton()}
               </div>
               <div
@@ -37,6 +42,15 @@ class RecipeItem extends React.Component {
                 }`}
               >
                 {recipe.steps}
+              </div>
+              <div
+                className={`${
+                  recipe.duration ? "showDuration" : "hideDuration"
+                }`}
+              >
+                <i aria-hidden="true" class="clock outline  icon"></i>
+                {recipe.duration}{" "}
+                <span>{this.renderTimeUnit(recipe.duration)}</span>
               </div>
             </div>
           </div>
@@ -64,18 +78,12 @@ class RecipeItem extends React.Component {
       );
   };
   addToFavorite(recipeId) {
-    //</button> this.props.addFavToUser(this.props.currentUid, index);
-    // return console.log(this.props.currentUid);
-    //  console.log(this.props.currentUid);
-    // console.log(recipeId);
-    // const termen = "winter";
-
     this.props.addFavToUser(this.props.currentUid, recipeId);
   }
   removeFavFromUserCall(recipeId) {
-    console.log("from removeFavFromUserCall");
-    console.log(this.props.currentUid);
-    console.log(recipeId);
+    // console.log("from removeFavFromUserCall");
+    // console.log(this.props.currentUid);
+    // console.log(recipeId);
     this.props.removeFavFromUser(this.props.currentUid, recipeId);
   }
   toggleTextArea = () => {
@@ -101,7 +109,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Only the recipes creator can delete it"
+          content="Available only for the reactor"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Remove
@@ -129,7 +137,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Only the recipes creator can edit it"
+          content="Editable only for the reactor"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Edit
@@ -139,7 +147,8 @@ class RecipeItem extends React.Component {
       );
   }
   renderFavoriteButton(favoriteIds, recipeId) {
-    //  console.log(favoriteIds.indexOf(recipeId));
+    // console.log("favoriteIds: " + favoriteIds);
+    // console.log("recipeId: " + recipeId);
     if (
       this.props.isSignedIn &&
       favoriteIds &&
@@ -229,11 +238,21 @@ class RecipeItem extends React.Component {
       );
     });
   }
+  renderTimeUnit(time) {
+    let unitNr = Number(time);
+    if (unitNr > 1) {
+      return "Hours";
+    } else {
+      return "Hour";
+    }
+  }
 }
 const mapStateToProps = (state) => {
+  const { authentication } = state;
+  const { isSignedIn, user } = authentication;
   return {
-    isSignedIn: state.authentication.isSignedIn,
-    currentUid: state.authentication.user ? state.authentication.user.uid : "",
+    isSignedIn,
+    currentUid: user ? user.uid : "",
     favorites: null,
     user: state.user,
   };

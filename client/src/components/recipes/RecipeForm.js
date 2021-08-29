@@ -5,7 +5,7 @@ class RecipeForm extends React.Component {
   state = {
     numberOfIngredients: 1,
     removedFields: [],
-    seasonSelected: "spring",
+    season: "spring",
   };
   componentDidMount() {
     if (this.props.numberOfIngredientsToRender) {
@@ -27,11 +27,11 @@ class RecipeForm extends React.Component {
           removedFields: this.state.removedFields.concat(index),
         },
         () => {
-          console.log(this.state.removedFields);
+          // console.log(this.state.removedFields);
         }
       );
     //console.log(index);
-    //  console.log(this.state.removedFields);
+    // console.log(this.state);
   };
   renderRemoveField = (removeField, i) => {
     if (this.state.removedFields.indexOf(i) !== -1)
@@ -95,11 +95,6 @@ class RecipeForm extends React.Component {
 
     return allTheIngredients;
   };
-  seasonChange = (e) => {
-    //console.log(e.target.value);
-    this.setState({ seasonSelected: e.target.value });
-    // this.props.changeBackground(e.target.value);
-  };
   render() {
     //  console.log(this.props);
     return (
@@ -116,6 +111,7 @@ class RecipeForm extends React.Component {
                 component="input"
                 placeholder="Your Title"
                 id="formTitle"
+                required
               />
             </div>
             <div className="field " id="ingredientsField">
@@ -137,6 +133,7 @@ class RecipeForm extends React.Component {
                 component="textarea"
                 placeholder="Steps to follow"
                 id="stepsToFollow"
+                required
               />
             </div>
             <div className="field field4">
@@ -145,15 +142,12 @@ class RecipeForm extends React.Component {
                 <Field
                   name="season"
                   id="field4inputs"
-                  // component="select"
+                  component="select"
                   initialValue="spring"
+                  // value={this.state.season}
                 >
                   {(props) => (
-                    <select
-                      {...props.select}
-                      onChange={this.seasonChange}
-                      value={this.state.seasonSelected}
-                    >
+                    <select {...props.input}>
                       <option value="spring">Spring</option>
                       <option value="summer">Summer</option>
                       <option value="autumn">Autumn</option>
@@ -170,6 +164,7 @@ class RecipeForm extends React.Component {
                   placeholder="amount of time in hours"
                   id="field4inputs"
                   type="number"
+                  required
                 />
               </section>
             </div>
@@ -185,7 +180,4 @@ class RecipeForm extends React.Component {
   }
 }
 
-// export default reactFinalForm({
-//   form: "recipeForm",
-// })(RecipeForm);
 export default RecipeForm;

@@ -8,7 +8,7 @@ class RecipeCreate extends React.Component {
   };
   onSubmitForm = (formValues) => {
     // console.log("inafara form");
-    // console.log(formValues);
+    console.log(formValues);
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {

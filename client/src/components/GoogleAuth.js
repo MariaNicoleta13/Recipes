@@ -43,7 +43,6 @@ class GoogleAuth extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        console.log("user signed out");
         this.props.signOut();
         this.setState({ recentlyLoggedIn: false });
       })
@@ -53,7 +52,6 @@ class GoogleAuth extends React.Component {
   };
   changeAuthState = (user) => {
     if (user) {
-      console.log(user);
       this.props.signIn(user);
       this.props.addUser();
       this.setState({ recentlyLoggedIn: true });
@@ -67,16 +65,13 @@ class GoogleAuth extends React.Component {
   };
   render() {
     const { recentlyLoggedIn } = this.state;
-    //   console.log(this.props);
+
     if (!this.props.isSIgnedIn) {
-      //  if (visible) setTimeout(() => this.setState({ visible: false }), 0);
       return (
         <div>
-          {/* <Transition visible={visible} animation="scale" duration={5000}> */}
           <div className="ui red  right pointing   label ">Please Sign in</div>
-          {/* </Transition> */}
 
-          <button onClick={this.onLogIn} className="ui red basic button">
+          <button onClick={this.onLogIn} className="ui red  button">
             Sign in
           </button>
         </div>
@@ -93,7 +88,7 @@ class GoogleAuth extends React.Component {
               Successfully signed in
             </div>
           </Transition>
-          <button onClick={this.onLogOut} className="ui violet basic button">
+          <button onClick={this.onLogOut} className="ui violet  button">
             Sign out
           </button>
         </div>
@@ -108,6 +103,8 @@ const mapToStateProps = (state) => {
     userDB: state.user,
   };
 };
-export default connect(mapToStateProps, { signIn, signOut, addUser })(
-  GoogleAuth
-);
+export default connect(mapToStateProps, {
+  signIn,
+  signOut,
+  addUser,
+})(GoogleAuth);

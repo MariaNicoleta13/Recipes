@@ -10,6 +10,7 @@ import {
   DELETE_RECIPE,
   EDIT_RECIPE,
   DELETE_FAV_USER,
+  CHANGE_SEASON,
 } from "./types";
 import recipes from "../apis/recipes";
 import history from "../history";
@@ -119,4 +120,8 @@ export const editRecipe = (id, formValues) => {
     dispatch({ type: EDIT_RECIPE, payload: response.data });
     history.push("/");
   };
+};
+export const changeSeason = (season) => {
+  console.log("season:" + season);
+  return { type: CHANGE_SEASON, payload: season };
 };
