@@ -104,7 +104,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Available only for the creactor"
+          content="Available only for the creator"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Remove
@@ -132,7 +132,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Editable only for the creactor"
+          content="Editable only for the creator"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Edit
