@@ -27,7 +27,6 @@ class GoogleAuth extends React.Component {
       .signInWithPopup(provider)
       .then((result) => {
         var user = result.user;
-        console.log(user);
         const objUser = {};
         const { displayName, uid, email } = user;
         objUser.displayName = displayName;

@@ -7,8 +7,6 @@ class RecipeCreate extends React.Component {
     seasonSelectedParent: "spring",
   };
   onSubmitForm = (formValues) => {
-    // console.log("inafara form");
-    console.log(formValues);
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {
@@ -32,9 +30,7 @@ class RecipeCreate extends React.Component {
     this.props.createRecipe(formValues);
   };
   changeBackground = (a) => {
-    console.log("from parent" + a);
     this.setState({ seasonSelectedParent: a });
-    console.log(this.state.seasonSelectedParent);
   };
   render() {
     return (

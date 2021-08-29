@@ -7,7 +7,6 @@ import {
 } from "./types";
 import recipes from "../apis/recipes";
 import history from "../history";
-import _ from "lodash";
 
 export const signIn = (id) => {
   return async (dispatch) => {

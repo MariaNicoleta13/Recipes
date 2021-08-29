@@ -46,7 +46,7 @@ class RecipeItem extends React.Component {
                   recipe.duration ? "showDuration" : "hideDuration"
                 }`}
               >
-                <i aria-hidden="true" class="clock outline  icon"></i>
+                <i aria-hidden="true" className="clock outline  icon"></i>
                 {recipe.duration}{" "}
                 <span>{this.renderTimeUnit(recipe.duration)}</span>
               </div>
@@ -79,9 +79,6 @@ class RecipeItem extends React.Component {
     this.props.addFavToUser(this.props.currentUid, recipeId);
   }
   removeFavFromUserCall(recipeId) {
-    // console.log("from removeFavFromUserCall");
-    // console.log(this.props.currentUid);
-    // console.log(recipeId);
     this.props.removeFavFromUser(this.props.currentUid, recipeId);
   }
   toggleTextArea = () => {
@@ -107,7 +104,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Available only for the reactor"
+          content="Available only for the creactor"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Remove
@@ -135,7 +132,7 @@ class RecipeItem extends React.Component {
     } else
       return (
         <Popup
-          content="Editable only for the reactor"
+          content="Editable only for the creactor"
           trigger={
             <button className="ui gray basic button   disabledEditButton">
               Edit
@@ -145,8 +142,6 @@ class RecipeItem extends React.Component {
       );
   }
   renderFavoriteButton(favoriteIds, recipeId) {
-    // console.log("favoriteIds: " + favoriteIds);
-    // console.log("recipeId: " + recipeId);
     if (
       this.props.isSignedIn &&
       favoriteIds &&

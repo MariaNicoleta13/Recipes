@@ -7,8 +7,6 @@ class RecipeEdit extends React.Component {
     this.props.fetchRecipe(this.props.match.params.id);
   }
   onSubmit = (formValues) => {
-    console.log("inafara form");
-    console.log(formValues);
     const ingredients = [];
     for (const key in formValues) {
       if (key.includes("ingredientsName")) {
@@ -50,7 +48,6 @@ class RecipeEdit extends React.Component {
   };
 
   render() {
-    console.log(this.props.recipeToEdit);
     if (!this.props.recipeToEdit) {
       return <div>Loading your recipe..</div>;
     }

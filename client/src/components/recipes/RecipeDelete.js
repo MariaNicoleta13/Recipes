@@ -27,11 +27,9 @@ class RecipeDelete extends React.Component {
         <Button className="ui button" onClick={this.props.onClose}>
           No
         </Button>
-        {/* this.props.match.params.id */}
         <Button
           color="violet"
           onClick={() => {
-          //  console.log(this.props.id);
             this.props.deleteRecipe(this.props.id);
           }}
         >
@@ -41,9 +39,6 @@ class RecipeDelete extends React.Component {
     );
   };
   render() {
-  //  console.log(this.props.recipeToBeDeleted);
-    // const id = this.props.id;
-
     return (
       <Modal
         title="Delete Recipe"

@@ -8,8 +8,6 @@ import {
 import _ from "lodash";
 
 const recipeReducer = (state = {}, action) => {
-  // console.log("reducer recipe");
-  // console.log(action.payload);
   switch (action.type) {
     case EDIT_RECIPE:
     case FETCH_RECIPE:

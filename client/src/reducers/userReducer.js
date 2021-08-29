@@ -1,5 +1,4 @@
 import {
-  FETCH_USER,
   USER_OUT,
   EDIT_USER,
   DELETE_FAV_USER,

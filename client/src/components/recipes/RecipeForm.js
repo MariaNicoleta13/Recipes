@@ -26,12 +26,8 @@ class RecipeForm extends React.Component {
         {
           removedFields: this.state.removedFields.concat(index),
         },
-        () => {
-          // console.log(this.state.removedFields);
-        }
+        () => {}
       );
-    //console.log(index);
-    // console.log(this.state);
   };
   renderRemoveField = (removeField, i) => {
     if (this.state.removedFields.indexOf(i) !== -1)
@@ -96,10 +92,8 @@ class RecipeForm extends React.Component {
     return allTheIngredients;
   };
   render() {
-    //  console.log(this.props);
     return (
       <Form
-        // onSubmit={this.onSubmit}
         onSubmit={this.props.onSubmit}
         initialValues={this.props.formValuesToRender}
         render={({ handleSubmit }) => (

@@ -8,16 +8,16 @@ import {
 } from "./types";
 import recipes from "../apis/recipes";
 import history from "../history";
+import _ from "lodash";
 
 export const createRecipe = (formValues) => {
   return async (dispatch, getState) => {
-    const { isSignedIn } = getState().authentication;
+    const isSignedIn = !_.isEmpty(getState().user);
 
     if (isSignedIn) {
-      const { uid } = getState().authentication.user;
+      const { uid } = getState().user;
       const response = await recipes.post("/recipes", { ...formValues, uid });
       dispatch({ type: CREATE_RECIPE, payload: response.data });
-      //programatic navigation:
       history.push("/");
     }
   };

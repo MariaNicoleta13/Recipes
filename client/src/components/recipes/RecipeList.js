@@ -9,7 +9,7 @@ import { SEASON_ALL } from "../../constants/seasons";
 
 class RecipeList extends React.Component {
   state = { isHidden: true };
-  
+
   componentDidMount() {
     this.props.fetchRecipes();
   }
@@ -97,8 +97,6 @@ class RecipeList extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentUid);
-    // this.props.fetchUser(this.props.currentUid);
     return (
       <div
         className="myMainContainerRecipeList"
