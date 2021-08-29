@@ -2,18 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Popup, Button, Menu, Dropdown } from "semantic-ui-react";
-import { fetchRecipes, fetchUser, changeSeason } from "../../actions";
+import { fetchRecipes, changeSeason } from "../../actions";
 import _ from "lodash";
 import RecipeItem from "./RecipeItem";
 import { SEASON_ALL } from "../../constants/seasons";
-// import { All } from "All.jpg";
+
 class RecipeList extends React.Component {
   state = { isHidden: true };
+  
   componentDidMount() {
     this.props.fetchRecipes();
-    if (_.isEmpty(this.props.user)) {
-      this.props.fetchUser(this.props.currentUid);
-    }
   }
 
   renderCreateRecipeButton() {
@@ -96,13 +94,6 @@ class RecipeList extends React.Component {
     return recipiesToBeRendered.map((recipe) => {
       return <RecipeItem recipe={recipe} key={recipe.id} />;
     });
-    // return this.props.recipes.map((recipe) => {
-    //   if (this.props.season == "All")
-    //     return <RecipeItem recipe={recipe} key={recipe.id} />;
-    //   if (recipe.season === this.props.season) {
-    //     return <RecipeItem recipe={recipe} key={recipe.id} />;
-    //   } else return "";
-    // });
   }
 
   render() {
@@ -136,16 +127,13 @@ class RecipeList extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.authentication.isSignedIn,
-    currentUid: state.authentication.user ? state.authentication.user.uid : "",
+    isSignedIn: !_.isEmpty(state.user),
     recipes: Object.values(state.recipes),
     favorites: null,
-    user: state.user,
     season: state.season,
   };
 };
 export default connect(mapStateToProps, {
   fetchRecipes,
-  fetchUser,
   changeSeason,
 })(RecipeList);

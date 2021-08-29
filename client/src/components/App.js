@@ -18,18 +18,11 @@ class App extends React.Component {
       .auth()
       .onAuthStateChanged(async (user) => {
         if (!!user) {
-          const user2 = firebase.auth().currentUser;
-          const objUser = {};
-          const { displayName, uid, email } = user2;
-          objUser.displayName = displayName;
-          objUser.uid = uid;
-          objUser.email = email;
-          this.props.signIn(objUser);
+          this.props.signIn(firebase.auth().currentUser.uid);
         } else {
           this.props.signOut();
         }
       });
-
   }
 
   componentWillUnmount() {

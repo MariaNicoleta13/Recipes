@@ -4,15 +4,15 @@ import {
   EDIT_USER,
   DELETE_FAV_USER,
   CREATE_USER,
+  USER_IN,
 } from "../actions/types";
-const usersReducer = (state = {}, action) => {
+const userReducer = (state = {}, action) => {
   switch (action.type) {
     case CREATE_USER:
       return { ...action.payload };
-    case FETCH_USER:
+    case USER_IN:
       return { ...action.payload };
     case EDIT_USER:
-      console.log(state);
       state.favoriteIds.push(action.payload);
       return { ...state };
     case DELETE_FAV_USER:
@@ -24,4 +24,4 @@ const usersReducer = (state = {}, action) => {
       return state;
   }
 };
-export default usersReducer;
+export default userReducer;

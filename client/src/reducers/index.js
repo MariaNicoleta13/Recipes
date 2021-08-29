@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
-import authReducer from "./authReducer";
 import recipeReducer from "./recipeReducer";
 import seasonReducer from "./seasonReducer";
-import usersReducer from "./usersReducer";
+import userReducer from "./userReducer";
+
 export default combineReducers({
-  authentication: authReducer,
   recipes: recipeReducer,
-  user: usersReducer,
+  user: userReducer,
   season: seasonReducer,
 });

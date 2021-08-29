@@ -4,16 +4,14 @@ import { Popup } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import RecipeDelete from "./RecipeDelete";
 import _ from "lodash";
-import { fetchUser, addFavToUser, removeFavFromUser } from "../../actions";
+import { addFavToUser, removeFavFromUser } from "../../actions";
 
 class RecipeItem extends React.Component {
   state = { isHidden: true, deleteModalMode: null };
-  componentDidMount() {
-    if (_.isEmpty(this.props.user)) this.props.fetchUser(this.props.currentUid);
-  }
+
   render() {
     const { recipe } = this.props;
-    // console.log(recipe.steps);
+
     return (
       <div className="ui card customCard" key={recipe.id}>
         <div className="content">
@@ -248,17 +246,14 @@ class RecipeItem extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  const { authentication } = state;
-  const { isSignedIn, user } = authentication;
   return {
-    isSignedIn,
-    currentUid: user ? user.uid : "",
+    isSignedIn: !_.isEmpty(state.user),
+    currentUid: state.user.id,
     favorites: null,
     user: state.user,
   };
 };
 export default connect(mapStateToProps, {
-  fetchUser,
   addFavToUser,
   removeFavFromUser,
 })(RecipeItem);

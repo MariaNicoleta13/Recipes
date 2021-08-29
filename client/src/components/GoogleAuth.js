@@ -5,6 +5,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { signIn, signOut, addUser } from "../actions";
 import { Transition } from "semantic-ui-react";
+import _ from "lodash";
 class GoogleAuth extends React.Component {
   state = { recentlyLoggedIn: false };
   componentDidMount() {
@@ -43,17 +44,15 @@ class GoogleAuth extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        this.props.signOut();
         this.setState({ recentlyLoggedIn: false });
       })
       .catch(function (error) {
         console.error("error at logout: " + error);
       });
   };
-  changeAuthState = (user) => {
+  changeAuthState = async (user) => {
     if (user) {
-      this.props.signIn(user);
-      this.props.addUser();
+      await this.props.addUser(user);
       this.setState({ recentlyLoggedIn: true });
       setTimeout(() => {
         this.setState({ recentlyLoggedIn: false });
@@ -66,7 +65,7 @@ class GoogleAuth extends React.Component {
   render() {
     const { recentlyLoggedIn } = this.state;
 
-    if (!this.props.isSIgnedIn) {
+    if (!this.props.isSignedIn) {
       return (
         <div>
           <div className="ui red  right pointing   label ">Please Sign in</div>
@@ -98,9 +97,8 @@ class GoogleAuth extends React.Component {
 
 const mapToStateProps = (state) => {
   return {
-    user: state.authentication.user,
-    isSIgnedIn: state.authentication.isSignedIn,
-    userDB: state.user,
+    user: state.user,
+    isSignedIn: !_.isEmpty(state.user),
   };
 };
 export default connect(mapToStateProps, {
